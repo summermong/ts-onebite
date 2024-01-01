@@ -1,0 +1,11 @@
+{
+  "compilerOptions": {
+    "target": "ES5",
+    "module": "CommonJS", // react가 어디서든 잘 작동되게 ES5 & CommonJS
+    "strict": true,
+    "allowJs": true,
+    "esModuleInterop": true, // default로 내보낸 값이 없는 모듈에서도 값을 불러오게 허용
+    "jsx": "react-jsx"
+  },
+  "include": ["src"]
+}
