@@ -1,11 +1,8 @@
 import './App.css';
 import { useState, useRef, useEffect } from 'react';
 import Editor from './components/Editor';
-
-interface Todo {
-  id: number;
-  content: string;
-}
+import { Todo } from './types';
+import TodoItem from './components/TodoItem';
 
 function App() {
   // setText는 제네릭 함수
@@ -27,6 +24,10 @@ function App() {
     ]);
   };
 
+  const onClickDelete = (id: number) => {
+    setTodos(todos.filter((todo) => todo.id !== id));
+  };
+
   useEffect(() => {
     console.log(todos);
   }, [todos]);
@@ -35,7 +36,11 @@ function App() {
     <div className="App">
       <h1>To do</h1>
       <Editor onClickAdd={onClickAdd} />
-      {/*<div>child</div>*/}
+      <div>
+        {todos.map((todo) => (
+          <TodoItem key={todo.id} {...todo} onClickDelete={onClickDelete} />
+        ))}
+      </div>
     </div>
   );
 }
